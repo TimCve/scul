@@ -31,7 +31,7 @@ int retrieved_data = *((int*) linked_list.retrieve(&linked_list, 0));
  * (keep in mind that this is a linked list of void*, meaning that removal
  * of a linked list node != freeing the void*, this is why the removeData() function
  * returns the void pointer from the node that was removed.) */
-free(linked_list.remove(&linked_list, 0));
+free((int*) linked_list.remove(&linked_list, 0));
 ```
 ### Queue
 Compile `DataStructures/LinkedList/*.c DataStructures/Queue/*.c` into your binary.
@@ -57,7 +57,7 @@ int peeked_data = *((int*) queue.peek(&queue));
 /* ELEMENT DEQUEUE (remove element at start of queue)
  * void* dequeue(struct Queue* queue) 
  * Why the call to free()? See the Linked List section. */
-free(queue.dequeue(&queue));
+free((int*) queue.dequeue(&queue));
 ```
 
 Compilation was tested with GCC  version 9.4.0 on Ubuntu GNU/Linux.

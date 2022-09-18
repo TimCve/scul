@@ -18,7 +18,7 @@ void initLinkedList(struct LinkedList* linked_list) {
 }
 
 void insertData(struct LinkedList* linked_list, int index, void* data) {
-	if(index > linked_list->length) {
+	if(index > linked_list->length || index < 0) {
 		fprintf(stderr, "List index [%d] is out of range!\n", index);
 		exit(1);
 	}
@@ -38,7 +38,7 @@ void insertData(struct LinkedList* linked_list, int index, void* data) {
 }
 
 void* retrieveData(struct LinkedList* linked_list, int index) {
-	if(index >= linked_list->length) {
+	if(index >= linked_list->length || index < 0) {
 		fprintf(stderr, "List index [%d] is out of range!\n", index);
 		exit(1);
 	}
@@ -47,7 +47,7 @@ void* retrieveData(struct LinkedList* linked_list, int index) {
 }
 
 void* removeData(struct LinkedList* linked_list, int index) {
-	if(index >= linked_list->length) {
+	if(index >= linked_list->length || index < 0) {
 		fprintf(stderr, "List index [%d] is out of range!\n", index);
 		exit(1);
 	}
@@ -55,6 +55,7 @@ void* removeData(struct LinkedList* linked_list, int index) {
 	void* data;
 	struct Node* next_node;
 	if(index == 0) {
+		data = linked_list->head->data;
 		next_node = linked_list->head->next;
 		free(linked_list->head);
 		linked_list->head = next_node;
