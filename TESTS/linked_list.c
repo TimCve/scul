@@ -1,4 +1,4 @@
-#include "../../DataStructures/LinkedList/LinkedList.h"
+#include "../DataStructures/LinkedList/LinkedList.h"
 #include <stdlib.h>
 
 void print_contents(struct LinkedList* l) {

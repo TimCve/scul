@@ -4,6 +4,8 @@ An extensive and free (as in freedom) library of utility APIs for the C programm
 #### Data Structures:
 - [Linked list](#linked-list)
 - [Queue](#queue)
+#### System Architecture:
+- [Thread pool](#thread-pool)
 
 ### Linked List
 Compile `DataStructures/LinkedList/*.c` into your binary.
@@ -58,6 +60,30 @@ int peeked_data = *((int*) queue.peek(&queue));
  * void* dequeue(struct Queue* queue) 
  * Why the call to free()? See the Linked List section. */
 free((int*) queue.dequeue(&queue));
+```
+### Thread pool
+Compile `DataStructures/LinkedList/*.c DataStructures/Queue/*.c SysArchitecture/ThreadPool/*.c` into your binary.
+```C
+/* USAGE INSTRUCTIONS
+ * #include "SysArchitecture/ThreadPool/ThreadPool.h" (is assumed) */
+
+/* INITIALIZATION
+ * void initThreadPool(struct ThreadPool* thread_pool, int thread_count) 
+ * second argument is the number of threads in the thread pool */
+struct ThreadPool thread_pool;
+initThreadPool(&thread_pool, 6);
+
+/* DEFINE TASK FUNCTION 
+ * Example: void task_func(void* arg) */
+
+/* ADD TASK TO THREAD POOL
+ * int threadPoolAddTask(struct ThreadPool* thread_pool, void (*func)(void*), void* arg) 
+ * returns a 0 if everything went well, 1 if the thread pool has the halt flag set */
+thread_pool.add(&thread_pool, task_func, (void*) task_arg);
+
+/* GRACEFULLY TERMINATE THREAD POOL (waits until all tasks are finished before freeing the thread pool memory */
+ * void threadPoolGracefulHalt(struct ThreadPool* thread_pool) */
+thread_pool.gracefulHalt(&thread_pool);
 ```
 
 Compilation was tested with GCC  version 9.4.0 on Ubuntu GNU/Linux.

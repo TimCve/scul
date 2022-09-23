@@ -1,4 +1,4 @@
-#include "../../DataStructures/Queue/Queue.h"
+#include "../DataStructures/Queue/Queue.h"
 #include <stdlib.h>
 
 int main(int argc, char** argv) {
