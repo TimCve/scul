@@ -7,7 +7,7 @@ An extensive and free (as in freedom) library of utility APIs for the C programm
 #### System Architecture:
 - [Thread pool](#thread-pool)
 
-### Linked List
+### Linked list
 Compile `DataStructures/LinkedList/*.c` into your binary.
 ```C
 /* USAGE INSTRUCTIONS 
@@ -78,7 +78,7 @@ initThreadPool(&thread_pool, 6);
 
 /* ADD TASK TO THREAD POOL
  * int threadPoolAddTask(struct ThreadPool* thread_pool, void (*func)(void*), void* arg) 
- * returns a 0 if everything went well, 1 if the thread pool has the halt flag set */
+ * returns a 0 if everything went well, 1 if the thread pool is inactive */
 thread_pool.add(&thread_pool, task_func, (void*) task_arg);
 
 /* GRACEFULLY TERMINATE THREAD POOL (waits until all tasks are finished before freeing the thread pool memory
