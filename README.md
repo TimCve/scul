@@ -81,7 +81,7 @@ initThreadPool(&thread_pool, 6);
  * returns a 0 if everything went well, 1 if the thread pool has the halt flag set */
 thread_pool.add(&thread_pool, task_func, (void*) task_arg);
 
-/* GRACEFULLY TERMINATE THREAD POOL (waits until all tasks are finished before freeing the thread pool memory */
+/* GRACEFULLY TERMINATE THREAD POOL (waits until all tasks are finished before freeing the thread pool memory
  * void threadPoolGracefulHalt(struct ThreadPool* thread_pool) */
 thread_pool.gracefulHalt(&thread_pool);
 ```
