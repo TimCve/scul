@@ -1,5 +1,9 @@
 #include "Queue.h"
 
+void* peek(struct Queue* queue);
+void* dequeue(struct Queue* queue);
+void enqueue(struct Queue* queue, void* data);
+
 void initQueue(struct Queue* queue) {	
 	queue->length = 0;
 	initLinkedList(&(queue->linked_list));

@@ -29,9 +29,9 @@ linked_list.insert(&linked_list, 0, data_to_insert);
 int retrieved_data = *((int*) linked_list.retrieve(&linked_list, 0));
 
 /* ELEMENT REMOVAL
- * void* removeData(struct LinkedList* linked_list, int index) 
+ * void* removeNode(struct LinkedList* linked_list, int index) 
  * (keep in mind that this is a linked list of void*, meaning that removal
- * of a linked list node != freeing the void*, this is why the removeData() function
+ * of a linked list node != freeing the void*, this is why the removeNode function
  * returns the void pointer from the node that was removed.) */
 free((int*) linked_list.remove(&linked_list, 0));
 ```

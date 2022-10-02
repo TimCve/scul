@@ -1,5 +1,8 @@
 #include "ThreadPool.h"
 
+int threadPoolAddTask(struct ThreadPool* thread_pool, void (*func)(void*), void* arg);
+void threadPoolGracefulHalt(struct ThreadPool* thread_pool);
+
 static void* threadPoolWorker(void* arg);
 
 void initThreadPool(struct ThreadPool* thread_pool, int thread_count) {

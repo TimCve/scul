@@ -17,8 +17,4 @@ struct Queue {
 
 void initQueue(struct Queue* queue);
 
-void* peek(struct Queue* queue);
-void* dequeue(struct Queue* queue);
-void enqueue(struct Queue* queue, void* data);
-
 #endif

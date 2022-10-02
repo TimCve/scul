@@ -1,5 +1,9 @@
 #include "LinkedList.h"
 
+void* retrieveData(struct LinkedList* linked_list, int index);
+void insertData(struct LinkedList* linked_list, int index, void* data);
+void* removeNode(struct LinkedList* linked_list, int index);
+
 static struct Node* iterateLinkedList(struct LinkedList* linked_list, int index, struct Node* init_node, int init_index) {
 	struct Node* current_node;
 	int i = 0;
@@ -22,7 +26,7 @@ void initLinkedList(struct LinkedList* linked_list) {
 
 	linked_list->retrieve = retrieveData;
 	linked_list->insert = insertData;
-	linked_list->remove = removeData;
+	linked_list->remove = removeNode;
 }
 
 void insertData(struct LinkedList* linked_list, int index, void* data) {
@@ -56,7 +60,7 @@ void* retrieveData(struct LinkedList* linked_list, int index) {
 	return iterateLinkedList(linked_list, index, NULL, 0)->data;
 }
 
-void* removeData(struct LinkedList* linked_list, int index) {
+void* removeNode(struct LinkedList* linked_list, int index) {
 	if(index >= linked_list->length || index < 0) {
 		fprintf(stderr, "List index [%d] is out of range!\n", index);
 		exit(1);

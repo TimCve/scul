@@ -17,8 +17,4 @@ struct LinkedList {
 
 void initLinkedList(struct LinkedList* linked_list);
 
-void* retrieveData(struct LinkedList* linked_list, int index);
-void insertData(struct LinkedList* linked_list, int index, void* data);
-void* removeData(struct LinkedList* linked_list, int index);
-
 #endif

@@ -30,7 +30,4 @@ struct ThreadTask {
 
 void initThreadPool(struct ThreadPool* thread_pool, int thread_count);
 
-int threadPoolAddTask(struct ThreadPool* thread_pool, void (*func)(void*), void* arg);
-void threadPoolGracefulHalt(struct ThreadPool* thread_pool);
-
 #endif
