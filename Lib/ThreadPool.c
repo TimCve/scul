@@ -1,11 +1,14 @@
-#include "ThreadPool.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include "../scul.h"
 
-int threadPoolAddTask(struct ThreadPool* thread_pool, void (*func)(void*), void* arg);
-void threadPoolGracefulHalt(struct ThreadPool* thread_pool);
+int threadPoolAddTask(struct ThreadPool *thread_pool, void (*func)(void*), void *arg);
+void threadPoolGracefulHalt(struct ThreadPool *thread_pool);
 
-static void* threadPoolWorker(void* arg);
+static void *threadPoolWorker(void *arg);
 
-void initThreadPool(struct ThreadPool* thread_pool, int thread_count) {
+void initThreadPool(struct ThreadPool *thread_pool, int thread_count) {
 	thread_pool->halt = false;
 	thread_pool->activated = false;
 
@@ -27,9 +30,9 @@ void initThreadPool(struct ThreadPool* thread_pool, int thread_count) {
 	thread_pool->activated = true;
 }
 
-int threadPoolAddTask(struct ThreadPool* thread_pool, void (*func)(void*), void* arg) {	
+int threadPoolAddTask(struct ThreadPool *thread_pool, void (*func)(void*), void *arg) {	
 	if(thread_pool->activated) {
-		struct ThreadTask* task = malloc(sizeof(struct ThreadTask));
+		struct ThreadTask *task = malloc(sizeof(struct ThreadTask));
 		task->func = func;
 		task->arg = arg;
 
@@ -43,7 +46,7 @@ int threadPoolAddTask(struct ThreadPool* thread_pool, void (*func)(void*), void*
 	} else return 1;
 }
 
-void threadPoolGracefulHalt(struct ThreadPool* thread_pool) {
+void threadPoolGracefulHalt(struct ThreadPool *thread_pool) {
 	thread_pool->halt = true;
 	thread_pool->activated = false;
 
@@ -60,8 +63,8 @@ void threadPoolGracefulHalt(struct ThreadPool* thread_pool) {
 	pthread_cond_destroy(&(thread_pool->task_start_signal));
 }
 
-static void* threadPoolWorker(void* arg) {
-	struct ThreadPool* thread_pool = (struct ThreadPool*) arg;
+static void *threadPoolWorker(void *arg) {
+	struct ThreadPool *thread_pool = (struct ThreadPool*) arg;
 	struct ThreadTask task;
 
 	while(!thread_pool->halt && !thread_pool->activated) continue;
