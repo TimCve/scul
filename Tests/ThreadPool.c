@@ -7,7 +7,7 @@
 #define THREAD_COUNT 6
 #define TASK_COUNT 100
 
-void threadTask(void* arg) {
+void threadTask(void *arg) {
 	int seconds = *((int*) arg);
 
 	printf("Sleeping for %d seconds...\n", seconds);
@@ -15,7 +15,7 @@ void threadTask(void* arg) {
 	printf("Done sleeping for %d seconds\n", seconds);
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char ** argv) {
 	struct ThreadPool tp;
 	initThreadPool(&tp, THREAD_COUNT);
 
