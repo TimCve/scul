@@ -1,17 +1,18 @@
 # SCUL - Simple C Utility Library
 An extensive and free (as in freedom) library of utility APIs for the C programming language.
 ### Included utilities (subject to updates):
-#### Data Structures:
 - [Linked list](#linked-list)
 - [Queue](#queue)
-#### System Architecture:
 - [Thread pool](#thread-pool)
+### Usage:
+- `make` to build `libscul.a`.
+- `make tests` to build tests for library components.
+- Link your code with `-lscul` (some parts also require `-lpthread`).
 
 ### Linked list
 ```C
 /* 
  * USAGE INSTRUCTIONS 
- * #include "DataStructures/LinkedList/LinkedList.h" (is assumed) 
  */
 
 /* 
