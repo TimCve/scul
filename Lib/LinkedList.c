@@ -4,7 +4,7 @@
 
 void *retrieveData(struct LinkedList *linked_list, int index);
 void insertData(struct LinkedList *linked_list, int index, void *data);
-void *removeData(struct LinkedList *linked_list, int index);
+void *removeNode(struct LinkedList *linked_list, int index);
 
 static struct Node *iterateLinkedList(struct LinkedList *linked_list, int index, struct Node *init_node, int init_index) {
 	struct Node *current_node;
@@ -62,11 +62,7 @@ void *retrieveData(struct LinkedList *linked_list, int index) {
 	return iterateLinkedList(linked_list, index, NULL, 0)->data;
 }
 
-<<<<<<< HEAD:Lib/LinkedList.c
-void *removeData(struct LinkedList *linked_list, int index) {
-=======
-void* removeNode(struct LinkedList* linked_list, int index) {
->>>>>>> 35d8209257f305851136151fa743b24860629bb8:DataStructures/LinkedList/LinkedList.c
+void *removeNode(struct LinkedList *linked_list, int index) {
 	if(index >= linked_list->length || index < 0) {
 		fprintf(stderr, "List index [%d] is out of range!\n", index);
 		exit(1);
